@@ -1,0 +1,15 @@
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\AddressBookSystemCollection.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\AddressBookSystemCollection.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\AddressBookSystemCollection.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\AddressBookSystemCollection.AssemblyInfo.cs
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\AddressBookSystemCollection.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\bin\Debug\net6.0\AddressBookSystemCollection.exe
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\bin\Debug\net6.0\AddressBookSystemCollection.deps.json
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\bin\Debug\net6.0\AddressBookSystemCollection.runtimeconfig.json
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\bin\Debug\net6.0\AddressBookSystemCollection.dll
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\bin\Debug\net6.0\AddressBookSystemCollection.pdb
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\AddressBookSystemCollection.dll
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\refint\AddressBookSystemCollection.dll
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\AddressBookSystemCollection.pdb
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\AddressBookSystemCollection.genruntimeconfig.cache
+C:\Users\DELL\source\repos\AddressBookSystemCollection\AddressBookSystemCollection\obj\Debug\net6.0\ref\AddressBookSystemCollection.dll
