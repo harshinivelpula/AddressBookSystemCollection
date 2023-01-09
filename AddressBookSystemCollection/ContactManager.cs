@@ -67,6 +67,16 @@ namespace AddressBookSystemCollection
                 default:
                     break;
             }
+            void CheckAddresssBook(string searchAdrBookName)
+            {
+                foreach (var ab in AddressBookMain.contactsDictionary)
+                {
+                    if ((ab.Key).ToUpper().Equals(searchAdrBookName.ToUpper()))
+                    {
+                        continue;
+                    }
+                }
+            }
         }
     }
 }

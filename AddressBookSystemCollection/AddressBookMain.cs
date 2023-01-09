@@ -26,6 +26,7 @@ namespace AddressBookSystemCollection
             NewAdrBook();
         }
 
+
         //new address book / dictionary
         public static void NewAdrBook()
         {
@@ -43,55 +44,68 @@ namespace AddressBookSystemCollection
                 Console.WriteLine(" Here are available address books : ");
                 foreach (var ab in contactsDictionary)
                 {
-                    Console.Write("\t" + ab.Key);
+                    Console.Write("" + ab.Key);
                 }
-                Console.WriteLine("\n\n Now you can add person details.");
+                Console.WriteLine(" Now you can add person details.");
                 AddPersonInfo(adrBookName);
             }
-        }
 
+        }
 
         // add contact method
         public static void AddPersonInfo(string adrBookName)
         {
-            if (contactsDictionary.ContainsKey(adrBookName))
+            Console.WriteLine("\n Working on address book : " + adrBookName);
+            Person persn = new Person();
+
+            Console.Write("\n Enter First Name : ");
+            persn.FirstName = Console.ReadLine();
+
+            // UC7: search duplicate entry of first name
+            DuplicateNameCheck(persn.FirstName);
+
+            Console.Write(" Enter Last Name : ");
+            persn.LastName = Console.ReadLine();
+
+            Console.Write(" Enter Address/landmark : ");
+            persn.Address = Console.ReadLine();
+
+            Console.Write(" Enter City : ");
+            persn.City = Console.ReadLine();
+
+            Console.Write(" Enter State : ");
+            persn.State = Console.ReadLine();
+
+            Console.Write(" Enter PinCode : ");
+            persn.ZipCode = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write(" Enter Phone Number (+91) : ");
+            persn.PhoneNumber = Console.ReadLine();
+
+            Console.Write(" Enter EmailId : ");
+            persn.EmailId = Console.ReadLine();
+
+            contactsDictionary[adrBookName].Add(persn);
+            ContactManager.Operations();
+
+        }
+
+        static void DuplicateNameCheck(string searchName)
+        {
+            Console.Write(" --> Checking existing first names : ");
+            bool isPresent = contactsDictionary.Values.SelectMany(contact => contact).Any(adrBookName => adrBookName.FirstName.ToUpper().Equals(searchName.ToUpper()));
+
+            if (isPresent)
             {
-
-                Console.WriteLine("\n Working on address book : " + adrBookName);
-                Person persn = new Person();
-
-                Console.Write("\n Enter First Name : ");
-                persn.FirstName = Console.ReadLine();
-
-                Console.Write(" Enter Last Name : ");
-                persn.LastName = Console.ReadLine();
-
-                Console.Write(" Enter Address/landmark : ");
-                persn.Address = Console.ReadLine();
-                Console.Write(" Enter City : ");
-                persn.City = Console.ReadLine();
-
-                Console.Write(" Enter State : ");
-                persn.State = Console.ReadLine();
-
-                Console.Write(" Enter PinCode : ");
-                persn.ZipCode = Convert.ToInt32(Console.ReadLine());
-
-                Console.Write(" Enter Phone Number (+91) : ");
-                persn.PhoneNumber = Console.ReadLine();
-
-                Console.Write(" Enter EmailId : ");
-                persn.EmailId = Console.ReadLine();
-
-                contactsDictionary[adrBookName].Add(persn);
-                ContactManager.Operations();
+                Console.Write(" This name already exists. Please add different one");
+                AddPersonInfo(adrBookName);
             }
             else
             {
-                Console.WriteLine(" Address book not found. Please retry.");
-                ContactManager.Operations();
+                Console.WriteLine(" No duplicate Entry");
             }
         }
+
         //edit contact method
         public static void ModifyPersonInfo(string adrBookName, string findName)
         {
@@ -102,7 +116,7 @@ namespace AddressBookSystemCollection
                 {
                     if (findName.ToUpper().Equals(per.FirstName.ToUpper()))
                     {
-                        Console.WriteLine("\n [ EDIT CONTACT ] Select Field to edit -\n 1.First_name\t2.Last_name\t3.Address\t4.City\t5.State\t6.Zipcode\t7.Phone_Number\t8.EmailId ");
+                        Console.WriteLine("\n [ EDIT CONTACT ] Select Field to edit  1.First_name 2.Last_name 3.Address 4.City 5.State 6.Zipcode 7.Phone_Number 8.EmailId ");
                         Console.WriteLine(" Type 0 to Exit Edit operation. ");
                         Console.Write(" Please provide an option : ");
                         int choice = int.Parse(Console.ReadLine());
@@ -150,7 +164,10 @@ namespace AddressBookSystemCollection
                     }
                 }
             }
+
         }
+
+
         //delete selected contact
         public static void DeletePersonInfo(string adrBookName, string findName)
         {
@@ -190,20 +207,21 @@ namespace AddressBookSystemCollection
         //display saved Contacts
         public static void DisplayContacts(string adrBookName)
         {
+
             if (contactsDictionary[adrBookName].Count > 0)
             {
                 Console.WriteLine(" Displaying contacts in addresss book : " + adrBookName);
                 foreach (Person person in contactsDictionary[adrBookName])
                 {
-                    Console.WriteLine(" First Name \t: {0} \n Last Name \t: {1} ", person.FirstName, person.LastName);
-                    Console.WriteLine(" Address \t: {0} \n City \t\t: {1} ", person.Address, person.City);
-                    Console.WriteLine(" State \t\t: {0} \n ZipCode \t: {1} ", person.State, person.ZipCode);
-                    Console.WriteLine(" Phone Number \t: {0} \n EmailId \t: {1} \n", person.PhoneNumber, person.EmailId);
+                    Console.WriteLine(" First Name : {0}  Last Name : {1} ", person.FirstName, person.LastName);
+                    Console.WriteLine(" Address : {0}  City : {1} ", person.Address, person.City);
+                    Console.WriteLine(" State : {0}  ZipCode : {1} ", person.State, person.ZipCode);
+                    Console.WriteLine(" Phone Number : {0}  EmailId : {1} ", person.PhoneNumber, person.EmailId);
                 }
             }
             else
             {
-                Console.WriteLine(" No contacts Present. Please add new contact. \n");
+                Console.WriteLine(" No contacts Present. Please add new contact");
             }
         }
     }
