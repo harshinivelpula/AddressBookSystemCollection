@@ -138,16 +138,33 @@ namespace AddressBookSystemCollection
         {
             static void DisplayFormat(Person persn)
             {
-                Console.WriteLine(" First Name \t: {0} \n Last Name \t: {1} ", persn.FirstName, persn.LastName);
-                Console.WriteLine(" Address \t: {0} \n City \t\t: {1} ", persn.Address, persn.City);
-                Console.WriteLine(" State \t\t: {0} \n ZipCode \t: {1} ", persn.State, persn.ZipCode);
-                Console.WriteLine(" Phone Number \t: {0} \n EmailId \t: {1} \n", persn.PhoneNumber, persn.EmailId);
+                Console.WriteLine(" First Name : {0}  Last Name : {1} ", persn.FirstName, persn.LastName);
+                Console.WriteLine(" Address : {0}  City : {1} ", persn.Address, persn.City);
+                Console.WriteLine(" State : {0}  ZipCode : {1} ", persn.State, persn.ZipCode);
+                Console.WriteLine(" Phone Number : {0}  EmailId : {1} ", persn.PhoneNumber, persn.EmailId);
             }
 
-            Console.WriteLine("\n Displying saved contact details : \n");
+            Console.WriteLine(" Displying saved contact details :");
             foreach (var persn in ContactList)
             {
                 DisplayFormat(persn);
+            }
+        }
+        //delete selected contact
+        public static void DeletePersonInfo(string findName)
+        {
+            for (int i = 0; i < ContactList.Count; i++)
+            {
+                if (ContactList[i].FirstName.Equals(findName))
+                {
+                    ContactList.RemoveAt(i);
+                    Console.WriteLine(" Contact Removed. ");
+                }
+                else
+                {
+                    Console.WriteLine(" Contact not present or ContactList is empty... Please Add contacts. \n");
+                    break;
+                }
             }
         }
     }
