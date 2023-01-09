@@ -240,7 +240,7 @@ namespace AddressBookSystemCollection
                     {
                         Console.WriteLine(" - - -  AddressBook : {0}  - - - ", ab.Key);
                         Console.WriteLine("First Name : {0} Last Name : {1} ", person.FirstName, person.LastName);
-                        Console.WriteLine("City: {0} \t State: {1} ", person.City, person.State);
+                        Console.WriteLine("City: {0}  State: {1} ", person.City, person.State);
                         dataNotFound = 0;
                     }
                 }
@@ -255,7 +255,6 @@ namespace AddressBookSystemCollection
             Dictionary<string, List<Person>> personInCity = new Dictionary<string, List<Person>>();
             Dictionary<string, List<Person>> personInState = new Dictionary<string, List<Person>>();
 
-            Console.WriteLine(" Displying person details By City or state");
             Console.Write(" Enter city name : ");
             string cityName = Console.ReadLine();
             personInCity[cityName] = new List<Person>();
@@ -263,8 +262,6 @@ namespace AddressBookSystemCollection
             Console.Write(" Enter State name : ");
             string stateName = Console.ReadLine();
             personInState[stateName] = new List<Person>();
-
-            //Console.WriteLine(" Displaying person name and location details containing : " + cityName);
 
             foreach (var ab in contactsDictionary)
             {
@@ -274,27 +271,53 @@ namespace AddressBookSystemCollection
                     {
                         personInCity[cityName].Add(person);
                     }
-
                     if (person.State.ToUpper().Equals(stateName.ToUpper()))
                     {
                         personInState[stateName].Add(person);
                     }
+                    else
+                    {
+                        Console.WriteLine(" City/State not found.");
+                    }
+                }
+            }
+            Console.WriteLine(" Options : 1.View persons by city/state \t 2.Get count of person by city/state \n");
+            Console.Write(" Your choice : ");
+            int option = int.Parse(Console.ReadLine());
+            if (option == 1)
+            {
+                Console.WriteLine(" - - - - - - View Person by city and state - - - - - - ");
+                Console.WriteLine("- - -  City : {0}  - - - ", cityName);
+                foreach (var data in personInCity[cityName])
+                {
+                    Console.Write(" First Name : {0}  Last Name : {1} ", data.FirstName, data.LastName);
+                    Console.Write(" City : {0}  State : {1} ", data.City, data.State);
+                }
+
+                Console.WriteLine(" - - -  State : {0}  - - - ", stateName);
+                foreach (var data in personInState[stateName])
+                {
+                    Console.Write(" First Name : {0} Last Name : {1} ", data.FirstName, data.LastName);
+                    Console.Write("City : {0} State : {1}", data.City, data.State);
+                }
+            }
+            else
+            {
+                Console.WriteLine(" - - - - - - Count of persons by city and state - - - - - - ");
+
+                Console.Write(" City : {0}  Number of person : {1} | ", cityName, personInCity[cityName].Count);
+                foreach (var data in personInCity[cityName])
+                {
+                    Console.Write(" {0} {1} ,", data.FirstName, data.LastName);
+                }
+
+                Console.Write(" State : {0}  Number of person : {1} | ", stateName, personInState[stateName].Count);
+                foreach (var data in personInState[stateName])
+                {
+                    Console.Write(" {0} {1} ,", data.FirstName, data.LastName);
                 }
             }
 
-            Console.WriteLine(" - - -  City : {0}  - - - ", cityName);
-            foreach (var data in personInCity[cityName])
-            {
-                Console.Write(" First Name : {0} Last Name : {1} ", data.FirstName, data.LastName);
-                Console.Write("City: {0}  State : {1} ", data.City, data.State);
-            }
-
-            Console.WriteLine("- - -  State : {0}  - - - ", stateName);
-            foreach (var data in personInState[stateName])
-            {
-                Console.Write(" First Name : {0}  Last Name : {1} ", data.FirstName, data.LastName);
-                Console.Write("City : {0}  State : {1} ", data.City, data.State);
-            }
         }
     }
 }
