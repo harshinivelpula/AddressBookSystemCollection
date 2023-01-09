@@ -109,14 +109,14 @@ namespace AddressBookSystemCollection
         //edit contact method
         public static void ModifyPersonInfo(string adrBookName, string findName)
         {
-            Console.WriteLine("\n Working on address book : " + adrBookName);
+            Console.WriteLine("Working on address book : " + adrBookName);
             if (contactsDictionary[adrBookName].Count > 0)
             {
                 foreach (Person per in contactsDictionary[adrBookName])
                 {
                     if (findName.ToUpper().Equals(per.FirstName.ToUpper()))
                     {
-                        Console.WriteLine("\n [ EDIT CONTACT ] Select Field to edit  1.First_name 2.Last_name 3.Address 4.City 5.State 6.Zipcode 7.Phone_Number 8.EmailId ");
+                        Console.WriteLine(" [ EDIT CONTACT ] Select Field to edit  1.First_name 2.Last_name 3.Address 4.City 5.State 6.Zipcode 7.Phone_Number 8.EmailId ");
                         Console.WriteLine(" Type 0 to Exit Edit operation. ");
                         Console.Write(" Please provide an option : ");
                         int choice = int.Parse(Console.ReadLine());
@@ -239,8 +239,8 @@ namespace AddressBookSystemCollection
                     if (person.State.Equals(cityState) || person.City.Equals(cityState))
                     {
                         Console.WriteLine(" - - -  AddressBook : {0}  - - - ", ab.Key);
-                        Console.WriteLine(" \tFirst Name : {0} \t Last Name : {1} ", person.FirstName, person.LastName);
-                        Console.WriteLine(" \tCity \t: {0} \t State \t: {1} ", person.City, person.State);
+                        Console.WriteLine("First Name : {0} Last Name : {1} ", person.FirstName, person.LastName);
+                        Console.WriteLine("City: {0} \t State: {1} ", person.City, person.State);
                         dataNotFound = 0;
                     }
                 }
@@ -248,6 +248,52 @@ namespace AddressBookSystemCollection
             if (dataNotFound == 1)
             {
                 Console.WriteLine(" Your input does not match any of the contact in address book.");
+            }
+        }
+        public static void DisplayByCityState()
+        {
+            Dictionary<string, List<Person>> personInCity = new Dictionary<string, List<Person>>();
+            Dictionary<string, List<Person>> personInState = new Dictionary<string, List<Person>>();
+
+            Console.WriteLine(" Displying person details By City or state");
+            Console.Write(" Enter city name : ");
+            string cityName = Console.ReadLine();
+            personInCity[cityName] = new List<Person>();
+
+            Console.Write(" Enter State name : ");
+            string stateName = Console.ReadLine();
+            personInState[stateName] = new List<Person>();
+
+            //Console.WriteLine(" Displaying person name and location details containing : " + cityName);
+
+            foreach (var ab in contactsDictionary)
+            {
+                foreach (Person person in contactsDictionary[ab.Key])
+                {
+                    if (person.City.ToUpper().Equals(cityName.ToUpper()))
+                    {
+                        personInCity[cityName].Add(person);
+                    }
+
+                    if (person.State.ToUpper().Equals(stateName.ToUpper()))
+                    {
+                        personInState[stateName].Add(person);
+                    }
+                }
+            }
+
+            Console.WriteLine(" - - -  City : {0}  - - - ", cityName);
+            foreach (var data in personInCity[cityName])
+            {
+                Console.Write(" First Name : {0} Last Name : {1} ", data.FirstName, data.LastName);
+                Console.Write("City: {0}  State : {1} ", data.City, data.State);
+            }
+
+            Console.WriteLine("- - -  State : {0}  - - - ", stateName);
+            foreach (var data in personInState[stateName])
+            {
+                Console.Write(" First Name : {0}  Last Name : {1} ", data.FirstName, data.LastName);
+                Console.Write("City : {0}  State : {1} ", data.City, data.State);
             }
         }
     }
