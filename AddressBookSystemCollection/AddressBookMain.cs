@@ -224,5 +224,31 @@ namespace AddressBookSystemCollection
                 Console.WriteLine(" No contacts Present. Please add new contact");
             }
         }
+        public static void SearchPerson()
+        {
+            Console.WriteLine(" Searching By City or state and displying person name  \n");
+            Console.Write(" Enter city/state name : ");
+            string cityState = Console.ReadLine();
+            int dataNotFound = 1;
+            Console.WriteLine(" Displaying person name and location details containing : " + cityState);
+
+            foreach (var ab in contactsDictionary)
+            {
+                foreach (Person person in contactsDictionary[ab.Key])
+                {
+                    if (person.State.Equals(cityState) || person.City.Equals(cityState))
+                    {
+                        Console.WriteLine(" - - -  AddressBook : {0}  - - - ", ab.Key);
+                        Console.WriteLine(" \tFirst Name : {0} \t Last Name : {1} ", person.FirstName, person.LastName);
+                        Console.WriteLine(" \tCity \t: {0} \t State \t: {1} ", person.City, person.State);
+                        dataNotFound = 0;
+                    }
+                }
+            }
+            if (dataNotFound == 1)
+            {
+                Console.WriteLine(" Your input does not match any of the contact in address book.");
+            }
+        }
     }
 }

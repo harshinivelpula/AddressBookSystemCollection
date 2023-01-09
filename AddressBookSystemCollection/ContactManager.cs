@@ -63,6 +63,12 @@ namespace AddressBookSystemCollection
                     AddressBookMain.NewAdrBook();
                     Operations();
                     break;
+                case 6:
+                    AddressBookMain.SearchPerson();
+                    Operations();
+                    break;
+
+                case 0: break;
 
                 default:
                     break;
